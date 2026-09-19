@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Tienda de Apps</title>
+    <style>
+        :root {
+            --primary: #da1f12;
+            --bg: #f3f4f6;
+            --card-bg: #ffffff;
+            --text: #1f2937;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        header h1 { margin: 0; font-size: 2.5rem; }
+        header p { margin-top: 0.5rem; opacity: 0.9; }
+        
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .admin-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary);
+        }
+        
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .app-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .app-card:hover { transform: translateY(-5px); }
+        
+        /* Estilos para la imagen del ícono */
+        .app-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            object-fit: cover;
+            border: 2px solid #f3f4f6;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .app-title { font-size: 1.25rem; font-weight: bold; margin: 0 0 0.5rem 0; }
+        .app-desc { color: #6b7280; font-size: 0.95rem; flex-grow: 1; margin-bottom: 1rem; }
+        
+        .download-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.2s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .download-btn:hover { background: #1d4ed8; }
+        
+        .version { font-size: 0.85rem; color: #9ca3af; margin-bottom: 0.5rem; font-weight: 500; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>APK-TOKIN</h1>
+        <p>Descarga las últimas aplicaciones directamente de APK-TOKIN</p>
+    </header>
+
+    <div class="container">
+        <section class="admin-section">
+            <h2>🛠️ Instrucciones de como descargar cualquier app que se encuentran en nuestra pagina</h2>
+            <p>1.escoje tu app e ingresa a "descargar ahora"</p>
+            <p>2.una vez adentro preciona en tu navegador los tres puntitos</p>
+            <p>3.una vez ahi busca donde dice "dar acceso directo/instalar" y solo precionalo y listo</p>
+            <p></p>
+        </section>
+
+        <div class="app-grid" id="appContainer"></div>
+    </div>
+
+    <script>
+        // --- ZONA DE EDICIÓN ---
+        const apps = [
+            {
+                title: "JDPB-Aprende JS",
+                version: "v8.0 -C-E-E-I",
+                description: "Es hora de que aprendas a programar con java script lo mas basico de JS",
+                image: "imagen.webp", 
+                downloadUrl: "https://rdelossantoshernandez85-sketch.github.io/JDPB-Aprende-JS/"
+            },
+            {
+                title: "DINO-AVION",
+                version: "v5.0",
+                description: "Es un juego, tipo dinosaurio pero con aviones",
+                // Puedes poner otro enlace de imagen diferente para esta app
+                image: "imagen2.webp", 
+                downloadUrl: "https://rdelossantoshernandez85-sketch.github.io/jdpb-game/"
+            }
+        ];
+
+        // --- CÓDIGO DE FUNCIONAMIENTO (No tocar) ---
+        const container = document.getElementById('appContainer');
+
+        apps.forEach(app => {
+            // Si no tiene imagen, usa un placeholder gris
+            const iconSrc = app.image ? app.image : 'https://via.placeholder.com/150/cccccc/ffffff?text=No+Img';
+            
+            const card = document.createElement('div');
+            card.className = 'app-card';
+            card.innerHTML = `
+                <img src="${iconSrc}" alt="${app.title}" class="app-icon">
+                <div class="version">Versión: ${app.version}</div>
+                <h3 class="app-title">${app.title}</h3>
+                <p class="app-desc">${app.description}</p>
+                <a href="${app.downloadUrl}" class="download-btn" download>Descargar Ahora</a>
+            `;
+            container.appendChild(card);
+        });
+    </script>
+</body>
+</html>
