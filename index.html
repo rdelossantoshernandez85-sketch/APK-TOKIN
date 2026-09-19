@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Tienda de Apps</title>
+    <title>APK-TOKIN</title>
     <style>
         :root {
             --primary: #da1f12;
+            --play: #10b981; /* Verde para jugar */
             --bg: #f3f4f6;
             --card-bg: #ffffff;
             --text: #1f2937;
@@ -61,7 +62,6 @@
         }
         .app-card:hover { transform: translateY(-5px); }
         
-        /* Estilos para la imagen del ícono */
         .app-icon {
             width: 100px;
             height: 100px;
@@ -76,21 +76,43 @@
         .app-title { font-size: 1.25rem; font-weight: bold; margin: 0 0 0.5rem 0; }
         .app-desc { color: #6b7280; font-size: 0.95rem; flex-grow: 1; margin-bottom: 1rem; }
         
-        .download-btn {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
+        .btn-container {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .btn {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            padding: 0.75rem 1.5rem;
+            padding: 0.75rem;
             border-radius: 8px;
             font-weight: bold;
             transition: background 0.2s;
-            width: 100%;
             box-sizing: border-box;
+            font-size: 0.95rem;
         }
-        .download-btn:hover { background: #1d4ed8; }
+        
+        .btn-play {
+            background-color: var(--play);
+            color: white;
+        }
+        .btn-play:hover { background-color: #059669; }
+        
+        .btn-download {
+            background-color: var(--primary);
+            color: white;
+        }
+        .btn-download:hover { background-color: #1d4ed8; }
         
         .version { font-size: 0.85rem; color: #9ca3af; margin-bottom: 0.5rem; font-weight: 500; }
+        
+        /* Ocultar botón si no hay enlace */
+        .hidden { display: none; }
     </style>
 </head>
 <body>
@@ -102,43 +124,57 @@
 
     <div class="container">
         <section class="admin-section">
-            <h2>🛠️ Instrucciones de como descargar cualquier app que se encuentran en nuestra pagina</h2>
-            <p>1.escoje tu app e ingresa a "descargar ahora"</p>
-            <p>2.una vez adentro preciona en tu navegador los tres puntitos</p>
-            <p>3.una vez ahi busca donde dice "dar acceso directo/instalar" y solo precionalo y listo</p>
-            <p></p>
+            <h2>🛠️ ¿Cómo usar las apps?</h2>
+            <p><strong>1. Jugar Ahora:</strong> Abres el juego directamente en el navegador.</p>
+            <p><strong>2. Descargar:</strong> Si el juego tiene versión instalable, descarga el archivo y guárdalo en tu dispositivo.</p>
+            <hr>
+            <p><small><em>Nota: Si tu enlace de "Jugar" es una web completa, el botón verde abrirá esa web. Si solo tienes el archivo .apk, el botón de descarga funcionará.</em></small></p>
         </section>
 
         <div class="app-grid" id="appContainer"></div>
     </div>
 
     <script>
-        // --- ZONA DE EDICIÓN ---
+        // --- ZONA DE EDICIÓN (TUS APPS) ---
         const apps = [
             {
                 title: "JDPB-Aprende JS",
                 version: "v8.0 -C-E-E-I",
-                description: "Es hora de que aprendas a programar con java script lo mas basico de JS",
+                description: "Es hora de que aprendas a programar con JavaSript lo más básico de JS.",
                 image: "imagen.webp", 
-                downloadUrl: "https://rdelossantoshernandez85-sketch.github.io/JDPB-Aprende-JS/"
+                // Enlace para Jugar (Web)
+                playUrl: "https://rdelossantoshernandez85-sketch.github.io/JDPB-Aprende-JS/",
+                // Enlace para Descargar (Archivo .apk, .zip, etc.)
+                // Si no tienes el archivo aún, déjalo en "#"
+                downloadUrl: "#" 
             },
             {
                 title: "DINO-AVION",
                 version: "v5.0",
-                description: "Es un juego, tipo dinosaurio pero con aviones",
-                // Puedes poner otro enlace de imagen diferente para esta app
+                description: "Es un juego, tipo dinosaurio pero con aviones. ¡Vuela alto!",
                 image: "imagen2.webp", 
-                downloadUrl: "https://rdelossantoshernandez85-sketch.github.io/jdpb-game/"
+                playUrl: "https://rdelossantoshernandez85-sketch.github.io/jdpb-game/",
+                downloadUrl: "#" 
             }
         ];
 
-        // --- CÓDIGO DE FUNCIONAMIENTO (No tocar) ---
+        // --- CÓDIGO DE FUNCIONAMIENTO ---
         const container = document.getElementById('appContainer');
 
         apps.forEach(app => {
-            // Si no tiene imagen, usa un placeholder gris
             const iconSrc = app.image ? app.image : 'https://via.placeholder.com/150/cccccc/ffffff?text=No+Img';
             
+            // Lógica: Si existe playUrl, muestra botón verde. Si no, lo oculta.
+            const playBtnHTML = app.playUrl 
+                ? `<a href="${app.playUrl}" target="_blank" class="btn btn-play">▶ Jugar Ahora</a>`
+                : `<div class="btn btn-play hidden">▶ Jugar Ahora</div>`; // Oculto si no hay enlace
+            
+            // Lógica: Si el downloadUrl es "#" (vacío), ocultamos el botón o lo deshabilitamos
+            // Aquí lo dejaremos visible pero si es "#" no hará nada, o lo podemos ocultar si prefieres:
+            const downloadBtnHTML = app.downloadUrl && app.downloadUrl !== "#"
+                ? `<a href="${app.downloadUrl}" download class="btn btn-download">⬇ Descargar</a>`
+                : `<div class="btn btn-download hidden">⬇ Descargar</div>`; // Oculto si no hay archivo
+
             const card = document.createElement('div');
             card.className = 'app-card';
             card.innerHTML = `
@@ -146,7 +182,11 @@
                 <div class="version">Versión: ${app.version}</div>
                 <h3 class="app-title">${app.title}</h3>
                 <p class="app-desc">${app.description}</p>
-                <a href="${app.downloadUrl}" class="download-btn" download>Descargar Ahora</a>
+                
+                <div class="btn-container">
+                    ${playBtnHTML}
+                    ${downloadBtnHTML}
+                </div>
             `;
             container.appendChild(card);
         });
