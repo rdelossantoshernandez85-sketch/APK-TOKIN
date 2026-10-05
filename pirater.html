@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pirater - APK-TOKIN</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#050507;color:white;min-height:100vh}
+header{padding:24px;border-bottom:1px solid #1f1f22;display:flex;justify-content:space-between;align-items:center;max-width:1000px;margin:0 auto}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.4rem}.logo span{color:#ff2a2a}
+.back{color:#888;text-decoration:none;border:1px solid #222;padding:8px 16px;border-radius:99px;font-size:0.85rem}
+.container{max-width:1000px;margin:0 auto;padding:50px 24px 140px}
+h1{font-family:'Space Grotesk',sans-serif;font-size:3.5rem}h1 span{color:#ff2a2a}
+.cat-title{font-family:'Space Grotesk',sans-serif;margin:45px 0 18px;font-size:1.4rem;border-left:4px solid #ff2a2a;padding-left:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.card{background:#111113;border:1px solid #1f1f22;border-radius:18px;padding:22px;text-decoration:none;color:white;display:block}
+.card h3{font-family:'Space Grotesk',sans-serif;margin-bottom:6px}.card p{color:#888;font-size:0.85rem}
+.tag{display:inline-block;font-size:0.6rem;font-weight:800;padding:3px 7px;border-radius:4px;margin-bottom:10px;background:rgba(255,42,42,0.15);color:#ff2a2a;border:1px solid rgba(255,42,42,0.3)}
+.tokin-watcher{position:fixed;bottom:20px;left:20px;z-index:5;width:92px;height:92px;border-radius:50%;overflow:hidden;border:2px solid #ff2a2a;background:#0a0a0a}
+.tokin-watcher img{width:100%;height:100%;object-fit:cover}
+.chat-btn{position:fixed;bottom:24px;right:24px;width:66px;height:66px;border-radius:50%;background:#0a0a0a;border:2px solid #ff2a2a;cursor:pointer;z-index:100;overflow:hidden}
+.chat-btn img{width:100%;height:100%;object-fit:cover}
+.chat-window{position:fixed;bottom:100px;right:24px;width:400px;max-width:calc(100vw - 32px);height:560px;background:#141416;border:1px solid #26262b;border-radius:24px;z-index:99;display:none;flex-direction:column;overflow:hidden}
+.chat-window.open{display:flex}
+.chat-header{padding:16px;background:#0f0f10;border-bottom:1px solid #222;display:flex;gap:12px;align-items:center}
+.chat-header .av{width:42px;height:42px;border-radius:50%;border:1px solid #ff2a2a;overflow:hidden}
+.chat-header .av img{width:100%;height:100%;object-fit:cover}
+.chat-body{flex:1;padding:16px;overflow-y:auto;display:flex;flex-direction:column;gap:12px}
+.msg{max-width:85%;padding:12px 14px;border-radius:18px;font-size:0.88rem}
+.msg.bot{background:#1a1a1d;border:1px solid #222;align-self:flex-start;border-bottom-left-radius:4px}
+.msg.user{background:#ff2a2a;color:white;align-self:flex-end;border-bottom-right-radius:4px}
+.chat-input{padding:12px;border-top:1px solid #222;display:flex;gap:8px;background:#101012}
+.chat-input input{flex:1;background:#1a1a1d;border:1px solid #222;border-radius:99px;padding:12px 16px;color:white;outline:none}
+.chat-input button{background:#ff2a2a;border:none;color:white;width:44px;height:44px;border-radius:50%;cursor:pointer}
+</style>
+</head>
+<body>
+<header><div class="logo">APK<span>-TOKIN</span> / pirater</div><a href="index.html" class="back">Volver</a></header>
+<div class="container">
+<h1>tokin /<span>pirater</span></h1>
+<h2 class="cat-title">Webs de Descarga y Torrent</h2>
+<div class="grid">
+<a href="https://thepiratebay.org/" class="card"><div class="tag">ADVERTENCIA</div><h3>THE PIRATE BAY</h3><p>El mejor lugar para piratear peliculas,apps,juegos,musica</p></a>
+<a href="https://www.1337x.tw/" class="card"><div class="tag">ADVERTENCIA</div><h3>1337x</h3><p>el mejor lugar de pirateria</p></a>
+<a href="https://rutracker.net/forum/index.php" class="card"><div class="tag">ADVERTENCIA</div><h3>RuTracker</h3><p>Portal masivo con sede en Rusia, líder en tráfico de torrents</p></a>
+<a href="https://torrentgalaxy.hair/" class="card"><div class="tag">ADVERTENCIA</div><h3>TorrentGalaxy</h3><p> Muy utilizadas para descargas de películas y series</p></a>
+<a href="https://www13.yts.lu/" class="card"><div class="tag">ADVERTENCIA</div><h3>YTS.mx</h3><p> Muy utilizadas para descargas de películas y series</p></a>
+<a href="https://techpp.com/2026/05/24/rarbg-proxy-sites/" class="card"><div class="tag">ADVERTENCIA</div><h3>RARBG</h3><p> Aunque su dominio principal ha tenido interrupciones, sigue siendo un referente en la comunidad</p></a>
+</div>
+<h2 class="cat-title">Webs de Streaming</h2>
+<div class="grid">
+<a href="https://www.f-movies.org/" class="card"><div class="tag">ADVERTENCIA</div><h3>Fmovies</h3><p>Extremadamente popular, opera con múltiples dominios para evadir bloqueos</p></a>
+<a href="https://cuevana3.sc/" class="card"><div class="tag">ADVERTENCIA</div><h3>Cuevana3</h3><p>Dominantes en el mercado de habla hispana Latinoamérica y España</p></a>
+<a href="https://pelisplushd.mx/" class="card"><div class="tag">ADVERTENCIA</div><h3> Pelisplus</h3><p>Dominantes en el mercado de habla hispana Latinoamérica y España</p></a>
+<a href="https://aniwatch.co.at/" class="card"><div class="tag">ADVERTENCIA</div><h3>Aniwatch</h3><p>sus sucesores como zoto.to o aniwatch.to Líder en piratería de anime.
+</p></a>
+<a href="https://zoroto.live/" class="card"><div class="tag">ADVERTENCIA</div><h3> zoto.to</h3><p>sus sucesores como zoto.to o aniwatch.to Líder en piratería de anime.
+</p></a>
+<a href="https://vegamoviess.xyz/" class="card"><div class="tag">ADVERTENCIA</div><h3>Vegamovies</h3><p>Muy populares por su catálogo de películas recientes</p></a>
+<a href="https://ww25.soap2day.day/" class="card"><div class="tag">ADVERTENCIA</div><h3>Soap2Day</h3><p>Muy populares por su catálogo de películas recientes</p></a>
+</div>
+<h2 class="cat-title">Servicios de IPTV Pirata</h2>
+<div class="grid">
+<a href="https://xuperapk.tv/" class="card"><div class="tag">ADVERTENCIA</div><h3>XUPER TV</h3><p>La mejor tienda de apps para piratear</p></a>
+<a href="https://www3.geniptv.org/" class="card"><div class="tag">ADVERTENCIA</div><h3>GenIPTV</h3><p>Espacio para tu link</p></a>
+<a href="https://www13.yts-official.to/" class="card"><div class="tag">ADVERTENCIA</div><h3>Yify</h3><p></p></a>
+<a href="https://telelatinoapk.me/tele-latino/" class="card"><div class="tag">ADVERTENCIA</div><h3> TELE LATINO</h3><p> RECRDAR QUE ESTAS WEBS NO SON CONFIABLES NO OTORGUE PERMISOS DE MAS</p></a>
+<a href="https://tvexpressapp.pro/" class="card"><div class="tag">ADVERTENCIA </div><h3> TVExpress.pro</h3><p>ESTA WEB ES MUY PELIGROSA CONTIENE TROLLANOS COMO "K7WG" INGRESA VAJO TU PROPIA RESPONSABILIDAD</p></a>
+<a href="https://bestiptvcc.com/" class="card"><div class="tag">ADVERTENCIA</div><h3>BestBuyIPTV</h3><p>RECRDAR QUE ESTAS WEBS NO SON CONFIABLES NO OTORGUE PERMISOS DE MAS</p></a>
+</div>
+<h2 class="cat-title">VIDEOJUEOS pirater</h2>
+<div class="grid">
+<a href="" class="card"><div class="tag">ADVERTENCIA</div><h3>FitGirl Repacks</h3><p>La mejor tienda de apps para piratear</p></a>
+<a href="#" class="card"><div class="tag">ADVERTENCIA</div><h3>Steamrip</h3><p>Espacio para tu link</p></a>
+<a href="#" class="card"><div class="tag">ADVERTENCIA</div><h3>DODI</h3><p>Espacio para tu link</p></a>
+<a href="#" class="card"><div class="tag">ADVERTENCIA</div><h3>PiviGames</h3><p>Espacio para tu link</p></a>
+<a href="#" class="card"><div class="tag">ADVERTENCIA</div><h3>Happy Mod</h3><p>Espacio para tu link</p></a>
+<a href="#" class="card"><div class="tag">ADVERTENCIA</div><h3></h3><p>Espacio para tu link</p></a>
+</div>
+<div class="tokin-watcher"><img src="imagenM.webp" alt="TOKIN"></div>
+<div class="chat-btn" id="chatBtn"><img src="imagenM.webp" alt="TOKIN"></div>
+<div class="chat-window" id="chatWindow">
+<div class="chat-header"><div class="av"><img src="imagenM.webp"></div><div><b>TOKIN</b><br><small style="color:#888">Fundación Tokin</small></div></div>
+<div class="chat-body" id="chatBody"></div>
+<div class="chat-input"><input id="chatInput" placeholder="Escribe aquí..." autocomplete="off"><button id="sendBtn">➤</button></div>
+</div>
+<script>
+const body=document.getElementById('chatBody'), win=document.getElementById('chatWindow'), btn=document.getElementById('chatBtn'), input=document.getElementById('chatInput'), sendBtn=document.getElementById('sendBtn');
+btn.onclick=()=>{win.classList.toggle('open'); if(body.children.length===0) start();};
+sendBtn.onclick=()=>send();
+function start(){addBot("Hola 🖤<br>Soy TOKIN.<br><br>¿En qué te ayudo? Pregúntame por los links y te explico para que sirve cada uno.");}
+function addBot(t){const d=document.createElement('div');d.className='msg bot';d.innerHTML=t;body.appendChild(d);body.scrollTop=body.scrollHeight}
+function addUser(t){const d=document.createElement('div');d.className='msg user';d.textContent=t;body.appendChild(d);body.scrollTop=body.scrollHeight}
+function handle(t){
+ let l=t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""), r="";
+ if(l.match(/hola|buenas/)){r=`Hola! Dime que categoría quieres que te explique.`;}
+ else if(l.match(/quien eres|fundacion/)){r=`Soy TOKIN de Fundación Tokin. Estoy aquí para ayudarte con los links.`;}
+ else if(l.match(/torrent/)){r=`<b>Webs de Descarga y Torrent:</b><br>Usan archivos .torrent entre usuarios.<br><br><b>ADVERTENCIA:</b> NO ENTRE SIN VPN Y DESCARGUE DE FUENTES CONFIABLES.`;}
+ else if(l.match(/streaming/)){r=`<b>Webs de Streaming:</b><br>Para ver contenido online.<br><br><b>ADVERTENCIA:</b> Cuidado con anuncios con virus.`;}
+ else if(l.match(/juego|apk|happy|lucky/)){r=`<b>Videojuegos / Mods:</b><br>APKs modificadas.<br><br><b>ADVERTENCIA:</b> Algunas piden acceso root, no otorgues todos los permisos.`;}
+ else {r=`Dime que quieres saber:<br>• <b>torrent</b><br>• <b>streaming</b><br>• <b>videojuegos</b>`;}
+ addBot(r);
+}
+function send(){const v=input.value.trim();if(!v)return;addUser(v);input.value='';setTimeout(()=>handle(v),300);}
+input.addEventListener('keypress',e=>{if(e.key==='Enter') send();});
+</script>
+</body>
+</html>

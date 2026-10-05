@@ -1,203 +1,119 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APK-TOKIN</title>
-    <style>
-        :root {
-            --primary: #da1f12;
-            --play: #10b981; /* Verde para jugar */
-            --bg: #f3f4f6;
-            --card-bg: #ffffff;
-            --text: #1f2937;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: var(--primary);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-        }
-        header h1 { margin: 0; font-size: 2.5rem; }
-        header p { margin-top: 0.5rem; opacity: 0.9; }
-        
-        .container {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        
-        .admin-section {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--primary);
-        }
-        
-        .app-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .app-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        .app-card:hover { transform: translateY(-5px); }
-        
-        .app-icon {
-            width: 100px;
-            height: 100px;
-            border-radius: 20px;
-            margin-bottom: 1rem;
-            object-fit: cover;
-            border: 2px solid #f3f4f6;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .app-title { font-size: 1.25rem; font-weight: bold; margin: 0 0 0.5rem 0; }
-        .app-desc { color: #6b7280; font-size: 0.95rem; flex-grow: 1; margin-bottom: 1rem; }
-        
-        .btn-container {
-            display: flex;
-            gap: 10px;
-            width: 100%;
-            margin-top: 1rem;
-        }
-        
-        .btn {
-            flex: 1;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            padding: 0.75rem;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: background 0.2s;
-            box-sizing: border-box;
-            font-size: 0.95rem;
-        }
-        
-        .btn-play {
-            background-color: var(--play);
-            color: white;
-        }
-        .btn-play:hover { background-color: #059669; }
-        
-        .btn-download {
-            background-color: var(--primary);
-            color: white;
-        }
-        .btn-download:hover { background-color: #1d4ed8; }
-        
-        .version { font-size: 0.85rem; color: #9ca3af; margin-bottom: 0.5rem; font-weight: 500; }
-        
-        /* Ocultar botón si no hay enlace */
-        .hidden { display: none; }
-    </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APK-TOKIN - Tienda</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0b;--card:#151517;--border:#26262b;--primary:#ff2a2a;--text:#fff;--muted:#9ca3af}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(20px);background:rgba(10,10,11,0.85);border-bottom:1px solid var(--border);padding:16px 0}
+.nav{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.6rem}.logo span{color:var(--primary)}
+.search-box{flex:1;max-width:320px;position:relative}.search-box input{width:100%;background:var(--card);border:1px solid var(--border);border-radius:99px;padding:12px 18px 12px 42px;color:white;outline:none}.search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.btn-piratear{background:white;color:black;padding:10px 18px;border-radius:99px;font-weight:800;text-decoration:none;font-family:'Space Grotesk',sans-serif;font-size:0.85rem;transition:0.2s;white-space:nowrap}
+.btn-piratear:hover{transform:scale(1.05)}
+.hero{max-width:1200px;margin:40px auto 0;padding:0 24px}.hero h2{font-family:'Space Grotesk',sans-serif;font-size:2.8rem;line-height:0.95}.hero-gradient{background:linear-gradient(90deg,#fff,#ff2a2a,#00d2ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.hero p{color:var(--muted);margin-top:10px}
+.container{max-width:1200px;margin:30px auto;padding:0 24px}
+.filters{display:flex;gap:10px;margin-bottom:24px}.filter-btn{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:8px 16px;border-radius:99px;font-size:0.85rem;cursor:pointer}.filter-btn.active{background:white;color:black}
+.app-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}.app-card{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:20px;display:flex;gap:16px}.app-icon{width:72px;height:72px;border-radius:18px;object-fit:cover;background:#222}.app-info{flex:1}.app-title{font-family:'Space Grotesk',sans-serif;font-weight:700}.version-badge{font-size:0.65rem;background:#222;color:var(--muted);padding:3px 8px;border-radius:99px;border:1px solid var(--border)}.app-desc{color:var(--muted);font-size:0.85rem;margin:6px 0 14px}.btn-container{display:flex;gap:8px}.btn{flex:1;padding:10px;border-radius:10px;font-weight:700;font-size:0.85rem;text-decoration:none;text-align:center}.btn-play{background:white;color:black}.btn-download{background:var(--primary);color:white}
+.tokin-wrapper{position:fixed;bottom:24px;right:24px;z-index:100;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.tokin-bubble{background:white;color:black;padding:14px 18px;border-radius:18px 18px 4px 18px;font-size:0.9rem;max-width:260px;transform:translateY(20px) scale(0.9);opacity:0;pointer-events:none;transition:0.5s cubic-bezier(0.34,1.56,0.64,1)}
+.tokin-bubble.show{transform:translateY(0) scale(1);opacity:1;pointer-events:auto}
+.tokin-fab{width:68px;height:68px;border-radius:50%;background:#111;border:2px solid var(--primary);overflow:hidden;cursor:pointer;box-shadow:0 0 25px rgba(255,42,42,0.6);animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.tokin-fab img{width:100%;height:100%;object-fit:cover}
+.chat-window{position:fixed;bottom:110px;right:24px;width:380px;max-width:calc(100vw - 32px);height:520px;background:#141416;border:1px solid var(--border);border-radius:24px;z-index:99;display:none;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.7)}
+.chat-window.open{display:flex}.chat-header{background:#0f0f10;padding:16px;display:flex;gap:12px;border-bottom:1px solid var(--border)}.chat-header img{width:42px;height:42px;border-radius:50%;border:1px solid var(--primary)}.chat-body{flex:1;padding:16px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}.msg{max-width:82%;padding:12px 14px;border-radius:18px;font-size:0.88rem;line-height:1.4}.msg.bot{background:var(--card);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px}.msg.user{background:var(--primary);color:white;align-self:flex-end;border-bottom-right-radius:4px}.msg.typing{font-size:0.75rem;color:var(--muted);background:transparent;border:none}
+.quick-replies{display:flex;flex-wrap:wrap;gap:6px}.quick-btn{background:#222;border:1px solid var(--border);color:var(--muted);padding:6px 12px;border-radius:99px;font-size:0.75rem;cursor:pointer}.quick-btn:hover{background:white;color:black}
+.chat-input{padding:12px;border-top:1px solid var(--border);display:flex;gap:8px;background:#101012}.chat-input input{flex:1;background:var(--card);border:1px solid var(--border);border-radius:99px;padding:11px 16px;color:white;outline:none}.chat-input button{background:var(--primary);border:none;color:white;width:42px;height:42px;border-radius:50%;cursor:pointer}
+</style>
 </head>
 <body>
+<header>
+<div class="nav">
+<div class="logo">APK<span>-TOKIN</span></div>
+<div class="search-box"><span class="search-icon">⌕</span><input type="text" id="searchInput" placeholder="Buscar apps..."></div>
+<a href="pirater.html" class="btn-piratear">☠ pirater</a>
+</div>
+</header>
 
-    <header>
-        <h1>APK-TOKIN</h1>
-        <p>Descarga las últimas aplicaciones directamente de APK-TOKIN</p>
-    </header>
+<div class="hero"><h2>Descubre apps <span class="hero-gradient">al instante.</span></h2><p>Tienda oficial de APK-TOKIN</p></div>
+<div class="container"><div class="filters"><button class="filter-btn active" data-filter="todos">Todos</button><button class="filter-btn" data-filter="juegos">Juegos</button><button class="filter-btn" data-filter="aprendizaje">Aprendizaje</button></div><div class="app-grid" id="appContainer"></div></div>
 
-    <div class="container">
-        <section class="admin-section">
-            <h2>🛠️ ¿Cómo usar las apps?</h2>
-            <p><strong>1. Jugar Ahora:</strong> Abres el juego directamente en el navegador.</p>
-            <p><strong>2. Descargar:</strong> Si el juego tiene versión instalable, descarga el archivo y guárdalo en tu dispositivo.</p>
-            <hr>
-            <p><small><em>Nota: Si tu enlace de "Jugar" es una web completa, el botón verde abrirá esa web. Si solo tienes el archivo .apk, el botón de descarga funcionará.</em></small></p>
-        </section>
+<div class="tokin-wrapper"><div class="tokin-bubble" id="tokinBubble">¡Hola! Soy <b>TOKIN</b> 👋 ¿Te ayudo a usar la tienda?</div><div class="tokin-fab" id="tokinFab"><img src="imagenF.png" onerror="this.src='https://i.imgur.com/8Km9tLL.png'"></div></div>
+<div class="chat-window" id="chatWindow"><div class="chat-header"><img src="imagenF.png" onerror="this.src='https://i.imgur.com/8Km9tLL.png'"><div><b>TOKIN • Asistente</b><br><small style="color:#888">● En línea</small></div></div><div class="chat-body" id="chatBody"></div><div class="chat-input"><input id="chatInput" placeholder="Pregúntale a TOKIN..." onkeypress="if(event.key==='Enter') sendMsg()"><button onclick="sendMsg()">➤</button></div></div>
 
-        <div class="app-grid" id="appContainer"></div>
-    </div>
+<script>
+const apps=[{title:"JDPB-Aprende JS",version:"v8.0",description:"Aprende JavaScript de forma interactiva y divertida.",image:"imagen.webp",category:"aprendizaje",playUrl:"https://rdelossantoshernandez85-sketch.github.io/JDPB-Aprende-JS/"},{title:"DINO-AVION",version:"v5.0",description:"juego de  dinosaurio de chrome pero con aviones.",image:"imagen2.webp",category:"Juegos",playUrl:"https://rdelossantoshernandez85-sketch.github.io/jdpb-game/"},{title:"ABE Programacion",version:"v6.0",description:"Aprende reparando bubs de la forma mas diverdida con ABE Programacion.",image:"",category:"aprendizaje",playUrl:"http"}];
+const container=document.getElementById('appContainer'),searchInput=document.getElementById('searchInput');let cat="todos";
+function render(){const t=searchInput.value.toLowerCase();container.innerHTML="";const f=apps.filter(a=>(a.title.toLowerCase().includes(t)||a.description.toLowerCase().includes(t))&&(cat==="todos"||a.category===cat));f.forEach(a=>{container.innerHTML+=`<div class="app-card"><img src="${a.image}" class="app-icon" onerror="this.src='https://via.placeholder.com/150'"><div class="app-info"><div style="display:flex;justify-content:space-between;align-items:center"><h3 class="app-title">${a.title}</h3><span class="version-badge">${a.version}</span></div><p class="app-desc">${a.description}</p><div class="btn-container"><a href="${a.playUrl}" target="_blank" class="btn btn-play">▶ Jugar</a><a href="${a.playUrl}" target="_blank" class="btn btn-download">Obtener</a></div></div></div>`})}
+searchInput.addEventListener('input',render);document.querySelectorAll('.filter-btn').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.filter-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');cat=b.dataset.filter;render()}));render();
 
-    <script>
-        // --- ZONA DE EDICIÓN (TUS APPS) ---
-        const apps = [
-            {
-                title: "JDPB-Aprende JS",
-                version: "v8.0 -C-E-E-I",
-                description: "Es hora de que aprendas a programar con JavaSript lo más básico de JS.",
-                image: "imagen.webp", 
-                // Enlace para Jugar (Web)
-                playUrl: "https://rdelossantoshernandez85-sketch.github.io/JDPB-Aprende-JS/",
-                // Enlace para Descargar (Archivo .apk, .zip, etc.)
-                // Si no tienes el archivo aún, déjalo en "#"
-                downloadUrl: "#" 
-            },
-            {
-                title: "DINO-AVION",
-                version: "v5.0",
-                description: "Es un juego, tipo dinosaurio pero con aviones. ¡Vuela alto!",
-                image: "imagen2.webp", 
-                playUrl: " https://rdelossantoshernandez85-sketch.github.io/app.en-mantenimiento/",
-                downloadUrl: "#" 
-            },
-             {
-                title: "JUEGO EN DESRROLLO",
-                version: "0.0",
-                description: "JUEGO EN DESARROLLO",
-                image: "", 
-                playUrl: "https://rdelossantoshernandez85-sketch.github.io/en-desarrollo/",
-                downloadUrl: "INTEL" 
-            }
-        ];
+// TOKIN LOGIC MEJORADO
+const fab=document.getElementById('tokinFab'),win=document.getElementById('chatWindow'),body=document.getElementById('chatBody'),bubble=document.getElementById('tokinBubble'),input=document.getElementById('chatInput');
+window.addEventListener('load',()=>{setTimeout(()=>bubble.classList.add('show'),1200);setTimeout(()=>bubble.classList.remove('show'),7000)});
+fab.onclick=()=>{bubble.classList.remove('show');win.classList.toggle('open');if(body.children.length===0)initChat();};
+function initChat(){addMsg("¡Hey! Soy <b>TOKIN</b> 👋<br>Soy el asistente oficial de esta tienda.<br><br>Puedo ayudarte con lo que sea de la tienda, los juegos, o cómo funciona todo. ¿Qué quieres saber?","bot");addQuick(["¿Cómo se juega?","¿Qué apps hay?","¿Qué es pirater?","¿Quién te hizo?"])}
+function addMsg(t,w){const d=document.createElement('div');d.className=`msg ${w}`;d.innerHTML=t;body.appendChild(d);body.scrollTop=body.scrollHeight}
+function addQuick(arr){const c=document.createElement('div');c.className="quick-replies";arr.forEach(txt=>{const b=document.createElement('button');b.className="quick-btn";b.innerText=txt;b.onclick=()=>{addMsg(txt,'user');handle(txt);c.remove()};c.appendChild(b)});body.appendChild(c);body.scrollTop=body.scrollHeight}
+function addTyping(){const d=document.createElement('div');d.className="msg typing";d.id="typing";d.innerText="TOKIN está escribiendo...";body.appendChild(d);body.scrollTop=body.scrollHeight}
 
-        // --- CÓDIGO DE FUNCIONAMIENTO ---
-        const container = document.getElementById('appContainer');
+function handle(text){
+    addTyping();
+    const t=text.toLowerCase();
+    setTimeout(()=>{
+        document.getElementById('typing')?.remove();
+        let r="", quick=[];
 
-        apps.forEach(app => {
-            const iconSrc = app.image ? app.image : 'https://via.placeholder.com/150/cccccc/ffffff?text=No+Img';
-            
-            // Lógica: Si existe playUrl, muestra botón verde. Si no, lo oculta.
-            const playBtnHTML = app.playUrl 
-                ? `<a href="${app.playUrl}" target="_blank" class="btn btn-play">▶ Jugar Ahora</a>`
-                : `<div class="btn btn-play hidden">▶ Jugar Ahora</div>`; // Oculto si no hay enlace
-            
-            // Lógica: Si el downloadUrl es "#" (vacío), ocultamos el botón o lo deshabilitamos
-            // Aquí lo dejaremos visible pero si es "#" no hará nada, o lo podemos ocultar si prefieres:
-            const downloadBtnHTML = app.downloadUrl && app.downloadUrl !== "#"
-                ? `<a href="${app.downloadUrl}" download class="btn btn-download">⬇ Descargar</a>`
-                : `<div class="btn btn-download hidden">⬇ Descargar</div>`; // Oculto si no hay archivo
+        if(t.includes('quien')||t.includes('quién')||t.includes('hizo')||t.includes('creo')||t.includes('creador')||t.includes('fundacion')||t.includes('fundación')){
+            r="Me creó <b>Fundación Tokin</b> 🖤<br><br>Somos un grupo que hace apps, juegos web y experimentos.<br>Yo soy TOKIN, el bot oficial que cuida la tienda y te ayuda.";
+            quick=["¿Qué es Fundación Tokin?","¿Qué apps hay?"];
+        }
+        else if(t.includes('fundacion')||t.includes('fundación')||t.includes('tokin que es')){
+            r="<b>Fundación Tokin</b> es el equipo detrás de APK-TOKIN.<br><br>Hacemos:<br>• Juegos web rápidos<br>• Apps para aprender<br>• Herramientas privadas<br><br>Todo lo que ves aquí es hecho por nosotros.";
+            quick=["¿Qué apps hay?","¿Qué es pirater?"];
+        }
+        else if(t.includes('jugar')||t.includes('juego')||t.includes('como se juega')){
+            r="Súper fácil:<br>1️⃣ Elige un juego de la lista<br>2️⃣ Dale a <b>▶ Jugar</b><br>3️⃣ Se abre al instante en tu navegador<br><br>No tienes que instalar nada. Si te gusta, le das a <b>Obtener</b>.";
+            quick=["¿Y descargar?","¿Qué me recomiendas?"];
+        }
+        else if(t.includes('descarg')||t.includes('obtener')||t.includes('instalar')){
+            r="Cuando le das a <b>Obtener</b>, si el juego tiene APK te lo descarga.<br>Si es solo web, te abre la versión para jugar online.<br><br>Todo es seguro, son proyectos nuestros de Fundación Tokin.";
+            quick=["¿Cómo se juega?","¿Qué apps hay?"];
+        }
+        else if(t.includes('apps')||t.includes('que hay')||t.includes('recomienda')){
+            r="Ahora mismo tenemos:<br><br>🎮 <b>DINO-AVION</b> - Juego infinito de aviones<br>💻 <b>JDPB-Aprende JS</b> - Aprende JavaScript jugando<br><br>Pronto vendrán más. ¿Cuál quieres probar?";
+            quick=["Quiero DINO-AVION","Quiero Aprende JS","¿Qué es pirater?"];
+        }
+        else if(t.includes('pirater')||t.includes('pirata')||t.includes('zona')||t.includes('boton')){
+            r="El botón que dice <b>pirater</b> arriba te lleva a otra página.<br><br>Ahí es donde van a estar los links privados, herramientas y cosas exclusivas que el admin pone.<br><br>Dale click y te abre la zona.";
+            quick=["Llévame a pirater","¿Quién te hizo?"];
+        }
+        else if(t.includes('dino')||t.includes('avion')){
+            r="¡DINO-AVION es el bueno! ✈️<br>Es como el dino de Chrome pero con aviones.<br><br><a href='https://rdelossantoshernandez85-sketch.github.io/apk-mantenimiento/' target='_blank' style='color:#ff2a2a'>→ Jugar DINO-AVION ahora</a>";
+            quick=["¿Cómo se juega?","¿Qué más hay?"];
+        }
+        else if(t.includes('js')||t.includes('javascript')||t.includes('aprende')||t.includes('curso')){
+            r="JDPB-Aprende JS es para aprender código jugando 💻<br><br><a href='https://rdelossantoshernandez85-sketch.github.io/JDPB-Aprende-JS/' target='_blank' style='color:#00d2ff'>→ Empezar a aprender JS</a>";
+            quick=["¿Qué apps hay?","¿Quién te hizo?"];
+        }
+        else if(t.includes('hola')||t.includes('hey')||t.includes('que onda')||t.includes('holi')){
+            r="¡Hola! 👋 ¿Qué onda?<br>Soy TOKIN, de <b>Fundación Tokin</b>.<br>¿En qué te ayudo hoy?";
+            quick=["¿Qué apps hay?","¿Cómo se juega?","¿Qué es pirater?"];
+        }
+        else{
+            r="No entendí eso al 100%, pero te puedo ayudar con:<br><br>• Cómo jugar<br>• Qué apps hay<br>• Qué es pirater / a dónde lleva el botón<br>• Quién me hizo<br><br>Escribe lo que quieras y te respondo.";
+            quick=["¿Qué apps hay?","¿Cómo se juega?","¿Quién te hizo?","¿Qué es pirater?"];
+        }
 
-            const card = document.createElement('div');
-            card.className = 'app-card';
-            card.innerHTML = `
-                <img src="${iconSrc}" alt="${app.title}" class="app-icon">
-                <div class="version">Versión: ${app.version}</div>
-                <h3 class="app-title">${app.title}</h3>
-                <p class="app-desc">${app.description}</p>
-                
-                <div class="btn-container">
-                    ${playBtnHTML}
-                    ${downloadBtnHTML}
-                </div>
-            `;
-            container.appendChild(card);
-        });
-    </script>
+        addMsg(r,'bot');
+        if(quick.length) addQuick(quick);
+    },700);
+}
+
+function sendMsg(){const v=input.value.trim();if(!v)return;addMsg(v,'user');input.value='';handle(v)}
+</script>
 </body>
 </html>
